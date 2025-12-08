@@ -1,0 +1,40 @@
+#include <iostream>
+#include <algorithm>  
+using namespace std;
+
+void printArray(int arr[], int n){
+    for(int i = 0; i < n; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+void sortOne(int arr[], int n){
+    int left = 0, right = n - 1;
+
+    while (left < right){
+
+        while (left < right && arr[left] == 0) {
+            left++;
+        }
+        while (left < right && arr[right] == 1){
+            right--;
+        }
+
+        if (left < right) {
+            swap(arr[left], arr[right]);
+            left++;
+            right--;
+        }
+    }
+}
+
+int main(){
+    int arr[] = {1,1,0,0,0,0,1,0};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    sortOne(arr, n);
+    printArray(arr, n);
+
+    return 0;
+}
